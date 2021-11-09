@@ -2,10 +2,10 @@
 import React from 'react';
 import { StyleSheet, Text, View,StatusBar } from 'react-native';
 
-export default function App() {
+export default function Settings() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Settings</Text>
       <StatusBar style="auto" />
     </View>
   );
