@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import ChatScreen from '../Screens/ChatScreen';
 const Stack = createStackNavigator();
