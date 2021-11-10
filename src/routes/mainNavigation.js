@@ -14,10 +14,10 @@ const Tab = createBottomTabNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='Home'
+      initialRouteName='Home2'
       screenOptions={{animationEnabled: false, headerShown: false}}
     >
-      <Stack.Screen name="Home" component={BottomTab} />
+      <Stack.Screen name="Home2" component={BottomTab} />
       {/* <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Settings" component={Settings} /> */}
