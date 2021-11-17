@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7.616" height="10.656" viewBox="0 0 7.616 10.656">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Path_1277" d="M873.808-504.8a.761.761 0 0 0-.714.8.761.761 0 0 0 .714.8.761.761 0 0 0 .714-.8.761.761 0 0 0-.714-.8m0 2.664a1.776 1.776 0 0 1-1.666-1.864 1.776 1.776 0 0 1 1.666-1.865 1.776 1.776 0 0 1 1.666 1.865 1.776 1.776 0 0 1-1.666 1.865m0-5.861a4.035 4.035 0 0 0-3.808 4.218c0 2.917 3.355 6.169 3.5 6.306a.445.445 0 0 0 .31.128.446.446 0 0 0 .31-.128c.143-.137 3.5-3.39 3.5-6.306a4.035 4.035 0 0 0-3.812-4.222" class="cls-1" transform="translate(-870 508)"/>
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <path id="Rectangle_447" d="M0 0H12V21H0z" class="cls-1"/>
+        </clipPath>
+        <clipPath id="clip-path-3">
+            <path id="Path_1276" d="M870-497.344h7.616V-508H870z" class="cls-1" transform="translate(-870 508)"/>
+        </clipPath>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#55ccd4"/>
+            <stop offset="1" stop-color="#44bcf1"/>
+        </linearGradient>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}
+        </style>
+    </defs>
+    <g id="Group_1727" clip-path="url(#clip-path)">
+        <g id="Group_1726" transform="translate(-2.956 -5.825)" style="isolation:isolate">
+            <g id="Group_1725" clip-path="url(#clip-path-2)">
+                <g id="Group_1724" clip-path="url(#clip-path-3)" transform="translate(2.956 5.825)">
+                    <path id="Path_1275" d="M865-513h12.376v15.985H865z" class="cls-1" transform="translate(-867.38 510.336)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

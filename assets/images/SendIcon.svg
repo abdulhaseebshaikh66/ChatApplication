@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Group_61" width="17.243" height="17.244" viewBox="0 0 17.243 17.244">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Path_48" d="M13.21-8.342l-1.6-4.8 4.8-4.8zm1.982-10.822l-4.8 4.8-4.8-1.6zm4.046-2.018a.821.821 0 0 0-.046-.233.668.668 0 0 0-.03-.078.834.834 0 0 0-.168-.254.827.827 0 0 0-.254-.168.591.591 0 0 0-.077-.03.851.851 0 0 0-.237-.047c-.019 0-.036-.005-.056-.005a.885.885 0 0 0-.258.041L2.59-16.782a.862.862 0 0 0-.59.818.862.862 0 0 0 .59.818l7.351 2.451 2.452 7.352a.861.861 0 0 0 .817.589.861.861 0 0 0 .817-.589L19.2-20.864a.865.865 0 0 0 .041-.258c0-.021 0-.04-.005-.06z" class="cls-1" transform="translate(-2 21.997)"/>
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <path id="Rectangle_29" d="M0 0H25V25H0z" class="cls-1" transform="translate(.169 .185)"/>
+        </clipPath>
+        <clipPath id="clip-path-3">
+            <path id="Path_47" d="M2-4.753h17.247V-22H2z" class="cls-1" transform="translate(-2 22)"/>
+        </clipPath>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fe8d7b"/>
+            <stop offset="1" stop-color="#ffb68d"/>
+        </linearGradient>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}
+        </style>
+    </defs>
+    <g id="Group_60" clip-path="url(#clip-path)">
+        <g id="Group_59" transform="translate(-4.028 -4.185)" style="isolation:isolate">
+            <g id="Group_58" clip-path="url(#clip-path-2)">
+                <g id="Group_57" clip-path="url(#clip-path-3)" transform="translate(4.028 4.183)">
+                    <path id="Path_46" d="M-3-27h25.867v25.87H-3z" class="cls-1" transform="translate(-1.312 22.688)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

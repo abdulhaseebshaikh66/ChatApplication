@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.957" height="19.009" viewBox="0 0 19.957 19.009">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fe8d7b"/>
+            <stop offset="1" stop-color="#ffb68d"/>
+        </linearGradient>
+        <clipPath id="clip-path">
+            <path id="Rectangle_457" d="M0 0H19.957V19.009H0z" class="cls-1"/>
+        </clipPath>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}
+        </style>
+    </defs>
+    <g id="Group_1781">
+        <g id="Group_1780" clip-path="url(#clip-path)">
+            <path id="Path_1295" d="M15.524 19a.993.993 0 0 1-.46-.11l-5.1-2.67-5.1 2.67a1 1 0 0 1-1.45-1.06l1-5.629-4.12-4a.986.986 0 0 1 .56-1.681l5.7-.83L9.064.564a1 1 0 0 1 1.8 0L13.4 5.685l5.7.829a.985.985 0 0 1 .56 1.68l-4.12 4 1 5.63A.988.988 0 0 1 15.524 19m-5.56-4.9a.922.922 0 0 1 .46.11l3.77 2-.72-4.21a1 1 0 0 1 .29-.889l3-2.93-4.2-.621a1 1 0 0 1-.71-.56l-1.89-3.75L8.074 7a1 1 0 0 1-.75.54l-4.2.621 3 2.929a1 1 0 0 1 .29.891l-.72 4.159 3.77-2a.926.926 0 0 1 .5-.04" class="cls-1"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" viewBox="0 0 68 68">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Path_565" d="M587.5-45.6h2.6v-8.061a1.3 1.3 0 0 1 1.3-1.3h2.912l.579-2.08H591.4a1.3 1.3 0 0 1-1.3-1.3v-3.51a2.54 2.54 0 0 1 2.6-2.47h2.6V-66.4h-2.6c-2.868 0-5.2 2.041-5.2 4.55v3.51a1.3 1.3 0 0 1-1.3 1.3h-2.6v2.08h2.6a1.3 1.3 0 0 1 1.3 1.3zm3.9 2.6h-5.2a1.3 1.3 0 0 1-1.3-1.3v-8.061h-2.6a1.3 1.3 0 0 1-1.3-1.3v-4.68a1.3 1.3 0 0 1 1.3-1.3h2.6v-2.21c0-3.942 3.5-7.151 7.8-7.151h3.9a1.3 1.3 0 0 1 1.3 1.3v4.68a1.3 1.3 0 0 1-1.3 1.3h-3.9v2.08h3.9a1.3 1.3 0 0 1 1.035.514 1.3 1.3 0 0 1 .218 1.135l-1.3 4.679a1.3 1.3 0 0 1-1.253.953h-2.6v8.061a1.3 1.3 0 0 1-1.3 1.3z" class="cls-1"/>
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <path id="Rectangle_192" d="M0 0H31V40H0z" class="cls-1" transform="translate(.449 -.498)"/>
+        </clipPath>
+        <clipPath id="clip-path-3">
+            <path id="Path_564" d="M581-43h18.2v-26H581z" class="cls-1" transform="translate(-581 69)"/>
+        </clipPath>
+        <filter id="Ellipse_8" width="68" height="68" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="3"/>
+            <feFlood flood-opacity=".11"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <style>
+            .cls-1{fill:#fe8d7b}
+        </style>
+    </defs>
+    <g id="Group_2033" transform="translate(-184 -535)">
+        <g filter="url(#Ellipse_8)" transform="translate(184 535)">
+            <circle id="Ellipse_8-2" cx="25" cy="25" r="25" fill="#f5f5f5" transform="translate(9 6)"/>
+        </g>
+        <g id="Group_727" clip-path="url(#clip-path)" transform="translate(-371.948 621.999)">
+            <g id="Group_726" transform="translate(574.499 -75.501)" style="isolation:isolate">
+                <g id="Group_725" clip-path="url(#clip-path-2)">
+                    <g id="Group_724" clip-path="url(#clip-path-3)" transform="translate(6.501 6.501)">
+                        <path id="Path_563" d="M576-74h29.9v39H576z" class="cls-1" transform="translate(-582.501 67.499)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

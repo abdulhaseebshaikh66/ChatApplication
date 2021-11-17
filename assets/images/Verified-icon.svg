@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.197" height="17.197" viewBox="0 0 17.197 17.197">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Path_60" d="M14.292-15.46l-3.928 5.16a.859.859 0 0 1-.678.34H9.68a.861.861 0 0 1-.68-.332l-2.088-2.671a.859.859 0 0 1 .147-1.206.859.859 0 0 1 1.207.147l1.4 1.794 3.258-4.272a.86.86 0 0 1 1.206-.163.859.859 0 0 1 .163 1.2M10.6-22A8.6 8.6 0 0 0 2-13.4a8.6 8.6 0 0 0 8.6 8.6 8.6 8.6 0 0 0 8.6-8.6 8.6 8.6 0 0 0-8.6-8.6" class="cls-1" transform="translate(-2 22)"/>
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <path id="Rectangle_35" d="M0 0H26V27H0z" class="cls-1" transform="translate(.115 -.453)"/>
+        </clipPath>
+        <clipPath id="clip-path-3">
+            <path id="Path_59" d="M2-3.943h18.057V-22H2z" class="cls-1" transform="translate(-2 22)"/>
+        </clipPath>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#55ccd4"/>
+            <stop offset="1" stop-color="#44bcf1"/>
+        </linearGradient>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}
+        </style>
+    </defs>
+    <g id="Group_81">
+        <g id="Group_80" clip-path="url(#clip-path)">
+            <g id="Group_79" transform="translate(-4.425 -4.425)" style="isolation:isolate">
+                <g id="Group_78" clip-path="url(#clip-path-2)">
+                    <g id="Group_77" clip-path="url(#clip-path-3)" transform="translate(4.424 4.424)">
+                        <path id="Path_58" d="M-3-27h25.8v25.8H-3z" class="cls-1" transform="translate(-1.299 22.701)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
