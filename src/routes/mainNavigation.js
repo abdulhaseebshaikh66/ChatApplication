@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // import screens
 import HomeScreen from '../Screens/HomeScreen';
+import ChatScreen from '../Screens/ChatScreen';
 import SettingScreen from '../Screens/SettingScreen';
 import LoginScreen from '../AuthScreens/LoginScreen';
 import SignupScreen from '../AuthScreens/SignUp';
@@ -21,13 +22,14 @@ const Tab = createBottomTabNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='Home'
+      initialRouteName='Login'
       screenOptions={{animationEnabled: false, headerShown: false}}
     >
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignupScreen} />
       <Stack.Screen name="HomeTab" component={BottomTab} />
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Chat" component={ChatScreen} />
       {/* <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Settings" component={Settings} /> */}

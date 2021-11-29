@@ -6,7 +6,8 @@ import {
   Image,
   Dimensions,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 
 import {
@@ -20,40 +21,43 @@ const LoginScreen = ({navigation}) => {
     Password:"",
   })
   return (
+      <ScrollView>
     <View style={styles.container}>
-      <View style={styles.imageView}>
-        <Image style={styles.logo} source={require('../../assets/images/logo2.png')}/>
-      </View>
-      <View style={styles.body}>
-        <TextInput 
-          placeholder='UserName'
-          style={styles.textField}
-          onChangeText={(txt)=>{setData({...data, FullName:txt})}}
-        />
-        <TextInput 
-          placeholder='Password'
-          style={styles.textField}
-          secureTextEntry
-          onChangeText={(txt)=>{setData({...data, Password:txt})}}
-        />
-        <Text style={styles.forgetPass}>Forget password</Text>
-        <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate("HomeTab")}}>
-          <Text style={[styles.txtbtn]}>Login</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.footer}>
-        <View style={[ styles.row]}>
-          <Text style={[styles.footertext]}>
-            Dont have an account? Click here to{' '}
-          </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-            <Text style={[styles.footertext, {color: "#391c4d"}]}>
-              Sign Up
-            </Text>
+
+        <View style={styles.imageView}>
+          <Image style={styles.logo} source={require('../../assets/images/logo2.png')}/>
+        </View>
+        <View style={styles.body}>
+          <TextInput 
+            placeholder='UserName'
+            style={styles.textField}
+            onChangeText={(txt)=>{setData({...data, FullName:txt})}}
+          />
+          <TextInput 
+            placeholder='Password'
+            style={styles.textField}
+            secureTextEntry
+            onChangeText={(txt)=>{setData({...data, Password:txt})}}
+          />
+          <Text style={styles.forgetPass}>Forget password</Text>
+          <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate("Home")}}>
+            <Text style={[styles.txtbtn]}>Login</Text>
           </TouchableOpacity>
         </View>
-      </View>
+        <View style={styles.footer}>
+          <View style={[ styles.row]}>
+            <Text style={[styles.footertext]}>
+              Dont have an account? Click here to{' '}
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <Text style={[styles.footertext, {color: "#391c4d"}]}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
     </View>
+      </ScrollView>
   )
 }
 

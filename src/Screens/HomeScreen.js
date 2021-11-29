@@ -16,13 +16,13 @@ import {
 import ChatComponent from '../Components/ChatSection';
 import Header from '../Components/Header';;
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Header/>
       <StatusBar style="auto" />
       <ScrollView style={styles.messageView}>
-        <ChatComponent/>      
+        <ChatComponent  navigate={() =>{navigation.navigate('Chat')}}/>      
         <ChatComponent/>      
         <ChatComponent/>
         <ChatComponent/>      

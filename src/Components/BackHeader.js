@@ -12,7 +12,7 @@ import {
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
 
-const Header = ()=>{
+const Header = (props)=>{
   return (
     <View style={styles.header}>
       <View style={{flexDirection:'row'}}>
@@ -23,7 +23,7 @@ const Header = ()=>{
             style={styles.image}
           />
         </TouchableOpacity>
-        <Text style={styles.txt}>Daniyal Abdul Bari</Text>
+        <Text style={styles.txt}>{props.title}</Text>
       </View>
     </View>
   )
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     elevation: 16,
     padding:15,
     paddingLeft:0,
+    marginBottom:10
     // paddingLeft:30,
   },
   txt:{

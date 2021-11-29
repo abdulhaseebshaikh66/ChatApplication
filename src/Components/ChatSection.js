@@ -14,35 +14,36 @@ import {
 } from 'react-native-responsive-screen';
 
 
-const ChatSection = () =>{
+const ChatSection = (props) => {
   return (
-    <View style={[styles.container, styles.row]}>
-      <View style={styles.imageView}>
-        <Image
-          style={styles.image}
-          source={require('../../assets/images/avatar.png')}
-        />
-      </View>
-      <View style={styles.textView}>
-        <View style={styles.row}>
-          <Text style={[styles.headertxt,{width:"70%"}]}>Abdul haseeb</Text>
-          <Text style={[styles.txt,{ alignSelf: 'center', alignText:'center'}]}>
-            10/10/21
-          </Text>
+    <TouchableOpacity onPress={() =>{props.navigate('Chat')}}>
+      <View style={[styles.container, styles.row]}>
+        <View style={styles.imageView}>
+          <Image
+            style={styles.image}
+            source={require('../../assets/images/avatar.png')}
+          />
         </View>
-        <View style={{}}>
-          <Text numberOfLines={3} style={[styles.txt,{marginTop:'2%'}]}>
-          a segment with a sequence number that is larger than the next, expected, in-order 
-sequence number, it detects a gap in the data stream—that is, a missing segment. 
-This gap could be the result of lost or reordered segments within the network. Since 
-TCP does not use negative acknowledgments, the receiver cannot send an explicit 
-negative acknowledgment back to the sender. Instead, it simply reacknowledges 
-(that is, generates a duplicate ACK for) the last in-order byte of data it has received. 
-(Note that Table 3.2 allo
-          </Text>
+        <View style={styles.textView}>
+          <View style={styles.row}>
+            <Text style={[styles.headertxt,{width:"75%"}]}>Abdul haseeb</Text>
+            <Text style={[styles.txt,{ alignSelf: 'center', alignText:'center'}]}>
+              10/10/21
+            </Text>
+          </View>
+          <View style={{}}>
+            <Text numberOfLines={3} style={[styles.txt,{marginTop:'2%'}]}>
+              a segment with a sequence number that is larger than the next, expected, in-order 
+              sequence number, it detects a gap in the data stream—that is, a missing segment. 
+              This gap could be the result of lost or reordered segments within the network. Since 
+              TCP does not use negative acknowledgments, the receiver cannot send an explicit 
+              negative acknowledgment back to the sender. Instead, it simply reacknowledges 
+              (that is, generates a duplicate ACK for) the last in-order byte of data it has received. 
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
