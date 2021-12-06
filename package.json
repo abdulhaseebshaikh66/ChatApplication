@@ -1,11 +1,11 @@
 {
-  "name": "chatApplication",
+  "name": "chatapplication",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "npx react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "npx react-native start",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -21,7 +21,8 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
     "react-native-size-matters": "^0.4.0",
-    "react-native-vector-icons": "^9.0.0"
+    "react-native-vector-icons": "^9.0.0",
+    "socket.io-client": "^4.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

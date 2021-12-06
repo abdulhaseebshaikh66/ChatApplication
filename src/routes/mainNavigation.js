@@ -1,8 +1,8 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import { StyleSheet, Image } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {StyleSheet, Image} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // import screens
 import HomeScreen from '../Screens/HomeScreen';
@@ -15,23 +15,20 @@ import SignupScreen from '../AuthScreens/SignUp';
 import Icon1 from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/EvilIcons';
 
-
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='Login'
-      screenOptions={{animationEnabled: false, headerShown: false}}
-    >
+      initialRouteName={true !== true ? 'Home' : 'Login'}
+      screenOptions={{animationEnabled: false, headerShown: false}}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignupScreen} />
       <Stack.Screen name="HomeTab" component={BottomTab} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
       <Stack.Screen name="Chat" component={ChatScreen} />
-      {/* <Stack.Screen name="Notifications" component={Notifications} />
-      <Stack.Screen name="Profile" component={Profile} />
+      {/* <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
   );
@@ -42,47 +39,58 @@ function BottomTab() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        animationEnabled: false, 
+        animationEnabled: false,
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle:{
-          height:'8%',
+        tabBarStyle: {
+          height: '8%',
           backgroundColor: 'rgb(249, 250, 247)',
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
           elevation: 10,
           borderWidth: 2,
           borderColor: '#fff',
-        }
-      }}
-    >
-      <Tab.Screen 
-        name="User" 
-        component={SettingScreen} 
+        },
+      }}>
+      <Tab.Screen
+        name="User"
+        component={SettingScreen}
         options={{
           tabBarIcon: ({focused, color}) => (
-            <Icon2 name={"user"} size={37} color={focused ? "rgb(22,215,105)": color} />
+            <Icon2
+              name={'user'}
+              size={37}
+              color={focused ? 'rgb(22,215,105)' : color}
+            />
           ),
         }}
       />
       <Tab.Screen
-        name="Home" 
-        component={HomeScreen} 
+        name="Home"
+        component={HomeScreen}
         screenOptions={{
-          tabBarStyle:{background:'red'}
+          tabBarStyle: {background: 'red'},
         }}
         options={{
           tabBarIcon: ({focused, color}) => (
-            <Icon1 name={"chatbox-ellipses-outline"} size={30} color={focused ? "rgb(22,215,105)": color} />
+            <Icon1
+              name={'chatbox-ellipses-outline'}
+              size={30}
+              color={focused ? 'rgb(22,215,105)' : color}
+            />
           ),
         }}
       />
-      <Tab.Screen 
-        name="Setting" 
-        component={SettingScreen} 
+      <Tab.Screen
+        name="Setting"
+        component={SettingScreen}
         options={{
           tabBarIcon: ({focused, color}) => (
-            <Icon1 name={"settings-outline"} size={30} color={focused ? "rgb(22,215,105)": color} />
+            <Icon1
+              name={'settings-outline'}
+              size={30}
+              color={focused ? 'rgb(22,215,105)' : color}
+            />
           ),
         }}
       />

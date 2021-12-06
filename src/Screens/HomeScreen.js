@@ -1,36 +1,28 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  Text, 
-  View,
-  StatusBar,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, Text, View, StatusBar, ScrollView} from 'react-native';
 import Icon1 from 'react-native-vector-icons/Ionicons';
 import {
-  widthPercentageToDP as wp, 
-  heightPercentageToDP as hp
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-// import Secreens 
+// import Secreens
 import ChatComponent from '../Components/ChatSection';
-import Header from '../Components/Header';;
+import Header from '../Components/Header';
 
 export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <Header/>
+      <Header />
       <StatusBar style="auto" />
       <ScrollView style={styles.messageView}>
-        <ChatComponent  navigate={() =>{navigation.navigate('Chat')}}/>      
-        <ChatComponent/>      
-        <ChatComponent/>
-        <ChatComponent/>      
-        <ChatComponent/>      
-        <ChatComponent/>   
-        <ChatComponent/>      
-        <ChatComponent/>      
-        <ChatComponent/>         
+        <ChatComponent
+          navigate={() => {
+            navigation.navigate('Chat');
+          }}
+        />
+        <ChatComponent />
+        <ChatComponent />
       </ScrollView>
     </View>
   );
@@ -41,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  messageView:{
-    marginTop:5,
-  }
+  messageView: {
+    marginTop: 5,
+  },
 });
