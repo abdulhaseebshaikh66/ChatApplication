@@ -8,18 +8,59 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import emailChecker from './emailChecker';
 
 const LoginScreen = ({navigation}) => {
   const [data, setData] = React.useState({
-    FullName: '',
+    Email: '',
     Password: '',
   });
+  // http://localhost:15000/signup
+  const checkCredentials = () => {
+    if (!emailChecker(data.Email)) {
+      Alert.alert('Error', 'Please enter correct email address');
+    } else if (data.Password.length < 8) {
+      Alert.alert('Error', 'Password is atleast 8 characters');
+    } else {
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('email', data.Email);
+      headers.append('password', data.Password);
+
+      fetch('http://localhost:15000/login', {
+        method: 'GET',
+        headers: headers,
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+      })
+        .then(res => {
+          console.log('here1');
+          return res.json();
+        })
+        .then(received => {
+          console.log('here2');
+          console.log('Received ', received, '\n\nEND\n');
+          if (received.response) {
+            // USER IS LOGGED IN NOW
+            //USER IS FOUND IN DATABASE
+            navigation.navigate('HomeTab');
+          }
+        })
+        .catch(err => {
+          console.log('====================================');
+          console.log(err);
+          console.log('====================================');
+        });
+      return;
+    }
+  };
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -31,10 +72,10 @@ const LoginScreen = ({navigation}) => {
         </View>
         <View style={styles.body}>
           <TextInput
-            placeholder="UserName"
+            placeholder="Email"
             style={styles.textField}
             onChangeText={txt => {
-              setData({...data, FullName: txt});
+              setData({...data, Email: txt});
             }}
           />
           <TextInput
@@ -48,9 +89,10 @@ const LoginScreen = ({navigation}) => {
           <Text style={styles.forgetPass}>Forgot password</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => {
-              navigation.navigate('HomeTab');
-            }}>
+            onPress={
+              checkCredentials
+              // navigation.navigate('HomeTab');
+            }>
             <Text style={[styles.txtbtn]}>Login</Text>
           </TouchableOpacity>
         </View>

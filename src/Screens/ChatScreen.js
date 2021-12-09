@@ -62,7 +62,7 @@ const ChatScreen = () => {
     <View style={styles.container}>
       <BackHeader title="Abdul haseeb" />
       <ScrollView
-        ref={ref => (scrollView = ref)}
+        ref={scrollView}
         onContentSizeChange={() =>
           scrollView.current.scrollToEnd({animated: true})
         }>
@@ -84,7 +84,8 @@ const ChatScreen = () => {
         <View style={styles.createoffer}>
           <TextInput
             multiline
-            numberOfLines={4}
+            // numberOfLines={2
+
             style={styles.inputmessage}
             defaultValue={text}
             placeholder="Type a message.."
@@ -118,6 +119,8 @@ const styles = StyleSheet.create({
   inputmessage: {
     marginLeft: '-2%',
     width: Dimensions.get('window').width / 1.5,
+    // dheight: 120,
+    maxHeight: 340,
     fontSize:
       (Dimensions.get('window').height + Dimensions.get('window').width) / 84,
   },
