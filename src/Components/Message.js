@@ -28,9 +28,8 @@ function StudentMessage(props) {
             ? styles.message_content
             : [styles.message_content, {alignItems: 'flex-end'}]
         }>
-        {/* <View style={styles.message_subcontent}>
-          <Text style={styles.subcon_txt1}>{props.name}</Text>
-        </View> */}
+        {/* <View style={styles.message_subcontent}>*/}
+        <Text style={styles.subcon_txt1}>{props.name}</Text>
         <Text
           style={[
             styles.message_txt,
@@ -59,11 +58,11 @@ const styles = ScaledSheet.create({
   },
 
   userimg: {
-    width: '35@ms',
-    height: '35@ms',
+    width: '30@ms',
+    height: '30@ms',
     borderRadius: 10000,
     resizeMode: 'cover',
-    width: '10%',
+    // width: '10%',
   },
 
   message_content: {
@@ -79,14 +78,14 @@ const styles = ScaledSheet.create({
 
   subcon_txt1: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: '12@ms',
+    fontSize: '10@ms',
     color: 'rgba(104,111,140,1)',
   },
 
   subcon_txt2: {
     marginTop: '0%',
     fontFamily: 'Montserrat-Regular',
-    fontSize: '9@ms',
+    fontSize: '11@ms',
     fontSize: hp('1.2%'),
     color: 'rgba(104,111,140,1)',
 
@@ -95,9 +94,9 @@ const styles = ScaledSheet.create({
   message_txt: {
     // paddingTop: '-3.5%',
     // paddingBottom: '0.75%',
+    fontSize: '15@ms',
     fontFamily: 'Montserrat-Medium',
 
-    fontSize: '12@ms',
     width: '70%',
     color: 'rgba(104,111,140,1)',
   },

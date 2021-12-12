@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -21,11 +21,74 @@ import BackHeader from '../Components/BackHeader';
 import Message from '../Components/Message';
 import {ms} from 'react-native-size-matters';
 
-const ChatScreen = () => {
+const ChatScreen = ({route, navigation}) => {
+  const {userid, conversation_id, conversation_name} = route.params;
   const [text, setText] = useState('');
   const [data, setData] = useState([]);
   const [id, setId] = useState(1);
   const url = '../../assets/images/avatar.png';
+  function saveChat(newMessage) {
+    console.log('Saved : ', newMessage);
+    //Encryption will happen here
+    fetch('http://localhost:15000/' + conversation_id + '/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Authorization: "",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(newMessage),
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+    })
+      .then(res => res.json())
+      .then(received => {
+        console.log('====================================');
+        // console.log('||||', received, '||||||');
+        console.log('====================================');
+      });
+  }
+  function extractChat() {
+    // fetch()
+    console.log('Hello world from ChatScreen with conv id : ', conversation_id);
+    fetch(
+      'http://localhost:15000/' + userid + '/' + conversation_id + '/messages',
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // Authorization: "",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+      },
+    )
+      .then(res => res.json())
+      .then(received => {
+        console.log('====================================');
+        // console.log('||||', received, '||||||');
+        console.log('====================================');
+        let tempArray = [];
+        for (let index = 0; index < received.length; index++) {
+          setId(id + 1);
+          // console.log(received[index]);
+          let obj = {
+            _id: id,
+            message: received[index].message_text, //AFTER DECRYPTING WILL LOOK CHANGE
+            hours: new Date(received[index].message_date).toLocaleDateString(),
+            read: 0,
+            userView: received[index].userView,
+            name: received[index].fullname,
+          };
+          tempArray.push(obj);
+        }
+        setData([...data, ...tempArray]);
+        // setConversations(received);
+      });
+    // return () => {};
+  }
+  useEffect(extractChat, []);
   const scrollView = useRef();
   const handleData = () => {
     let _id = id;
@@ -33,9 +96,10 @@ const ChatScreen = () => {
     setId(id + 1);
     let date = new Date();
     // date.toLocaleDateString()
-    let read = Math.round(Math.random());
-    let userView = Math.round(Math.random());
-    let message = text;
+    //  Math.round(Math.random())
+    let read = 0;
+    let userView = 0;
+    let message = text.trim();
     // setData([
     //   ...data,
     // {
@@ -46,21 +110,29 @@ const ChatScreen = () => {
     //   userView: userView,
     // },
     // ]);
-    let obj = {
-      _id: id,
-      message: message,
-      hours: date.toLocaleDateString(),
-      read: read,
-      userView: userView,
-    };
-    setData([...data, obj]);
-    console.log(obj, ' isdata');
-    setText('');
+    if (message.length > 0) {
+      let obj = {
+        _id: id,
+        message: message,
+        hours: date.toLocaleDateString(),
+        read: read,
+        userView: userView,
+        name: conversation_name,
+      };
+      setData([...data, obj]);
+      // console.log(obj, ' isdata');
+      setText('');
+      saveChat({
+        senderid: userid,
+        message_text: message,
+        message_type: '12qe',
+      });
+    }
     return;
   };
   return (
     <View style={styles.container}>
-      <BackHeader title="Abdul haseeb" />
+      <BackHeader title={conversation_name} />
       <ScrollView
         ref={scrollView}
         onContentSizeChange={() =>
@@ -76,6 +148,7 @@ const ChatScreen = () => {
             hours={msg.hours}
             Read={msg.read}
             userView={msg.userView}
+            name={msg.name}
           />
         ))}
       </ScrollView>

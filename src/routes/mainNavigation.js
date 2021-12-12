@@ -25,8 +25,8 @@ function MyStack() {
       screenOptions={{animationEnabled: false, headerShown: false}}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignupScreen} />
-      <Stack.Screen name="HomeTab" component={BottomTab} />
-      {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
+      {/* <Stack.Screen name="HomeTab" component={BottomTab} /> */}
+      <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Chat" component={ChatScreen} />
       {/* <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Settings" component={Settings} /> */}
@@ -34,7 +34,8 @@ function MyStack() {
   );
 }
 
-function BottomTab() {
+function BottomTab({route}) {
+  console.log(route);
   return (
     <Tab.Navigator
       initialRouteName="Home"

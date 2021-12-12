@@ -50,13 +50,18 @@ const LoginScreen = ({navigation}) => {
           if (received.response) {
             // USER IS LOGGED IN NOW
             //USER IS FOUND IN DATABASE
-            navigation.navigate('HomeTab');
+            navigation.navigate('Home', {
+              id: received.data[0].userid,
+            });
+          } else {
+            Alert.alert('Invalid Credentials', 'Wrong email or password');
           }
         })
         .catch(err => {
           console.log('====================================');
           console.log(err);
           console.log('====================================');
+          Alert.alert('No Connection', 'Not connected to internet');
         });
       return;
     }

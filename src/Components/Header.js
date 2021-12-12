@@ -1,39 +1,40 @@
 import React from 'react';
 import {
-  View, 
+  View,
   Text,
   StyleSheet,
   Dimensions,
-  Image, 
-  TouchableOpacity
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import {
-  widthPercentageToDP as wp, 
-  heightPercentageToDP as hp
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-const Header = ()=>{
+const Header = () => {
   return (
     <View style={styles.header}>
-      <View style={{flexDirection:'row'}}>
-        <TouchableOpacity style={{width:wp('20%')}} onPress={() =>console.log('hello')}>
+      <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          style={{width: wp('20%')}}
+          onPress={() => console.log('hello')}>
           <Image
-            onPress={()=>console.log('Press')}
+            onPress={() => console.log('Press')}
             source={require('../../assets/images/avatar.png')}
             style={styles.image}
           />
         </TouchableOpacity>
-        <Text style={styles.txt}>Daniyal Abdul Bari</Text>
+        <Text style={styles.txt}>{'<User name>'}</Text>
       </View>
     </View>
-  )
-}
-
+  );
+};
 
 const styles = StyleSheet.create({
   header: {
-    display:'flex',
-    justifyContent:'center',
+    display: 'flex',
+    justifyContent: 'center',
     backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOffset: {
@@ -43,25 +44,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
     elevation: 16,
-    padding:15,
-    paddingLeft:0,
+    padding: 15,
+    paddingLeft: 0,
     // paddingLeft:30,
   },
-  txt:{
-    fontSize: (Dimensions.get('window').height+Dimensions.get('window').width)/60,
-    fontSize:hp('2.8%'),
+  txt: {
+    fontSize:
+      (Dimensions.get('window').height + Dimensions.get('window').width) / 60,
+    fontSize: hp('2.8%'),
     // color: 'rgba(104, 111, 140, 1)',
-    color:"#391c4d",
+    color: '#391c4d',
     fontFamily: 'Montserrat-Bold',
-    alignSelf:'center',
+    alignSelf: 'center',
   },
   // image section on headertxt
-  image:{
-    width:'100%',
-    height:hp('5%'),
-    resizeMode:'contain',
-    borderRadius:10000,
-  }
-})
+  image: {
+    width: '100%',
+    height: hp('5%'),
+    resizeMode: 'contain',
+    borderRadius: 10000,
+  },
+});
 
 export default Header;
