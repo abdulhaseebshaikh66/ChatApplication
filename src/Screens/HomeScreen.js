@@ -5,21 +5,28 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-
 // import Secreens
 import ChatComponent from '../Components/ChatSection';
 import Header from '../Components/Header';
-
+// export const Lastmsg = React.createContext('');
 export default function HomeScreen({route, navigation}) {
-  const {id} = route.params;
+  const {id, name} = route.params;
   const [conversations, setConversations] = React.useState([]);
-  // alert(JSON.stringify(route));
   React.useEffect(() => {
-    console.log(
-      'Hello World from Home ' + JSON.stringify(navigation),
-      'is user',
-    );
-    // let Tosend = 'http://localhost:15000/' + id + '/conversations';
+    fetchConvos();
+    return () => {};
+  }, []);
+  // React.useEffect(() => {
+  //   navigation.addListener('focus', e => {
+  //     // setConversations([]);
+  //     // setMessage('');
+  //     fetchConvos();
+  //     console.log(e, 'is e');
+  //   });
+  //   return () => {};
+  // }, []);
+
+  const fetchConvos = () => {
     fetch('http://localhost:15000/' + id + '/conversations', {
       method: 'GET',
       headers: {
@@ -36,42 +43,38 @@ export default function HomeScreen({route, navigation}) {
         console.log('||||', received, '||||||');
         console.log('====================================');
         if (received?.response !== false) {
+          console.log('Received');
           setConversations(received);
         }
       });
-  }, []);
-
+  };
   return (
     <View style={styles.container}>
-      <Header />
-      <StatusBar style="auto" />
+      <Header name={name} />
       <ScrollView style={styles.messageView}>
         {conversations.map(val => {
           return (
             <View key={val.conversation_id}>
+              {/* <Lastmsg.Provider value={val.last_message}> */}
               <ChatComponent
                 conversation_name={val?.conversation_name}
-                navigate={(uid, id, name) => {
+                navigate={(uid, id, name, message_setter) => {
                   navigation.navigate('Chat', {
                     conversation_id: id,
                     conversation_name: name,
                     userid: uid,
+                    message_setter: message_setter,
                   });
                 }}
                 conversation_id={val.conversation_id}
                 last_message={val.last_message}
+                message_type={val.message_type}
                 userid={id}
               />
+              {/* </Lastmsg.Provider> */}
             </View>
           );
         })}
-        {/* <ChatComponent
-          navigate={() => {
-            navigation.navigate('Chat');
-          }}
-        />
-        <ChatComponent />
-        <ChatComponent /> */}
       </ScrollView>
     </View>
   );

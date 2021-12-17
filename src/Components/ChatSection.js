@@ -7,18 +7,34 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-
+import {Lastmsg} from '../Screens/HomeScreen';
+import * as Algorithm from '../Algorithm_Encyption_Decryption';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
 const ChatSection = props => {
-  const {conversation_name, conversation_id, last_message, userid} = props;
+  const {
+    conversation_name,
+    conversation_id,
+    userid,
+    last_message,
+    message_type,
+  } = props;
+  const decrypted = Algorithm.decrypt(last_message, message_type);
+  const [message, setLastMessage] = React.useState(decrypted);
+  // console.log(Lastmsg);
+  // const last_message = React.useContext(Lastmsg);
   return (
     <TouchableOpacity
       onPress={() => {
-        props.navigate(userid, conversation_id, conversation_name);
+        props.navigate(
+          userid,
+          conversation_id,
+          conversation_name,
+          setLastMessage,
+        );
       }}>
       <View style={[styles.container, styles.row]}>
         <View style={styles.imageView}>
@@ -33,13 +49,13 @@ const ChatSection = props => {
               {conversation_name}
             </Text>
             <Text
-              style={[styles.txt, {alignSelf: 'center', alignText: 'center'}]}>
+              style={[styles.txt, {alignSelf: 'center', textAlign: 'center'}]}>
               10/10/21
             </Text>
           </View>
           <View style={{}}>
             <Text numberOfLines={3} style={[styles.txt, {marginTop: '2%'}]}>
-              {last_message}
+              {message}
             </Text>
           </View>
         </View>
@@ -77,7 +93,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: hp('1.8%'),
+    fontSize: hp('2%'),
   },
   image: {
     resizeMode: 'contain',

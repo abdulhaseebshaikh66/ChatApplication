@@ -12,7 +12,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-const Header = () => {
+const Header = ({name}) => {
   return (
     <View style={styles.header}>
       <View style={{flexDirection: 'row'}}>
@@ -25,7 +25,7 @@ const Header = () => {
             style={styles.image}
           />
         </TouchableOpacity>
-        <Text style={styles.txt}>{'<User name>'}</Text>
+        <Text style={styles.txt}>{name}</Text>
       </View>
     </View>
   );

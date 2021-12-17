@@ -17,18 +17,23 @@ import {
 } from 'react-native-responsive-screen';
 
 // import screen
+// import {Lastmsg} from './HomeScreen';
 import BackHeader from '../Components/BackHeader';
 import Message from '../Components/Message';
 import {ms} from 'react-native-size-matters';
+import * as Algorithm from '../Algorithm_Encyption_Decryption';
 
 const ChatScreen = ({route, navigation}) => {
-  const {userid, conversation_id, conversation_name} = route.params;
+  // console.log(Lastmsg);
+  const {userid, conversation_id, conversation_name, message_setter} =
+    route.params;
   const [text, setText] = useState('');
   const [data, setData] = useState([]);
   const [id, setId] = useState(1);
+  //const message_setter = React.useContext(Lastmsg);
   const url = '../../assets/images/avatar.png';
   function saveChat(newMessage) {
-    console.log('Saved : ', newMessage);
+    // console.log('Saved : ', newMessage);
     //Encryption will happen here
     fetch('http://localhost:15000/' + conversation_id + '/messages', {
       method: 'POST',
@@ -72,10 +77,13 @@ const ChatScreen = ({route, navigation}) => {
         let tempArray = [];
         for (let index = 0; index < received.length; index++) {
           setId(id + 1);
-          // console.log(received[index]);
+          const decrypted = Algorithm.decrypt(
+            received[index].message_text,
+            received[index].message_type,
+          );
           let obj = {
             _id: id,
-            message: received[index].message_text, //AFTER DECRYPTING WILL LOOK CHANGE
+            message: decrypted, //AFTER DECRYPTING WILL LOOK CHANGE
             hours: new Date(received[index].message_date).toLocaleDateString(),
             read: 0,
             userView: received[index].userView,
@@ -88,28 +96,21 @@ const ChatScreen = ({route, navigation}) => {
       });
     // return () => {};
   }
-  useEffect(extractChat, []);
+  useEffect(() => {
+    extractChat();
+    return () => {};
+  }, []);
+
   const scrollView = useRef();
+
   const handleData = () => {
     let _id = id;
     console.log('heel' + id);
     setId(id + 1);
     let date = new Date();
-    // date.toLocaleDateString()
-    //  Math.round(Math.random())
     let read = 0;
     let userView = 0;
     let message = text.trim();
-    // setData([
-    //   ...data,
-    // {
-    //   _id: _id,
-    //   message: message,
-    //   hours: date,
-    //   read: read,
-    //   userView: userView,
-    // },
-    // ]);
     if (message.length > 0) {
       let obj = {
         _id: id,
@@ -120,13 +121,15 @@ const ChatScreen = ({route, navigation}) => {
         name: conversation_name,
       };
       setData([...data, obj]);
-      // console.log(obj, ' isdata');
       setText('');
+      const message_type = Algorithm.generate_type();
+      const enc_message = Algorithm.encrypt(message, message_type);
       saveChat({
         senderid: userid,
-        message_text: message,
-        message_type: '12qe',
+        message_text: enc_message,
+        message_type: message_type,
       });
+      message_setter(message);
     }
     return;
   };
@@ -139,17 +142,19 @@ const ChatScreen = ({route, navigation}) => {
           scrollView.current.scrollToEnd({animated: true})
         }>
         {data.map((msg, ind) => (
-          <Message
-            id={ind}
-            _id={msg._id}
-            // name={'abdul haseeb'}
-            message={msg.message}
-            url={require(url)}
-            hours={msg.hours}
-            Read={msg.read}
-            userView={msg.userView}
-            name={msg.name}
-          />
+          <View key={ind} style={{flex: 1}}>
+            <Message
+              id={ind}
+              _id={msg._id}
+              // name={'abdul haseeb'}
+              message={msg.message}
+              url={require(url)}
+              hours={msg.hours}
+              Read={msg.read}
+              userView={msg.userView}
+              name={msg.name}
+            />
+          </View>
         ))}
       </ScrollView>
 
@@ -163,9 +168,11 @@ const ChatScreen = ({route, navigation}) => {
             defaultValue={text}
             placeholder="Type a message.."
             placeholderTextColor="rgba(104,111,140,1)"
-            onChangeText={e => setText(e)}
+            onChangeText={val => {
+              setText(val);
+            }}
           />
-          <TouchableOpacity style={styles.icons} onPress={handleData}>
+          <TouchableOpacity style={styles.icons} onPress={() => handleData()}>
             <Icon1 name="send-o" size={hp('2%')} color="rgb(254,141,123)" />
           </TouchableOpacity>
         </View>

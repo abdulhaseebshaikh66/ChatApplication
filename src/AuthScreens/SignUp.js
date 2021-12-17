@@ -16,6 +16,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import ip from '../data/ip_address';
+import * as Algorithm from '../Algorithm_Encyption_Decryption';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const SignUpScreen = ({navigation}) => {
   const [isEnabled, setIsEnabled] = React.useState(false);
   const [data, setData] = React.useState({
@@ -25,6 +27,15 @@ const SignUpScreen = ({navigation}) => {
     Password: '',
     Gender: 'M',
   });
+  const storeData = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, value);
+    } catch (e) {
+      console.log('==34================');
+      console.log(e);
+      console.log('====34=======================');
+    }
+  };
   const handleRegister = () => {
     // console.log('Registered : mail ', emailChecker(data.Mail));
     if (
@@ -49,6 +60,10 @@ const SignUpScreen = ({navigation}) => {
         },
       );
     } else {
+      const user_type = Algorithm.generate_type();
+      const enc_email = Algorithm.generate_key(data.Mail);
+      const enc_password = Algorithm.generate_key(data.Password);
+      const enc_phone = Algorithm.generate_key(data.Phone);
       fetch('http://localhost:15000/signup', {
         method: 'POST',
         headers: {
@@ -60,10 +75,11 @@ const SignUpScreen = ({navigation}) => {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify({
           name: data.FullName,
-          email: data.Mail,
-          password: data.Password,
-          phone: data.Phone,
+          email: enc_email,
+          password: enc_password,
+          phone: enc_phone,
           gender: data.Gender,
+          user_type: user_type,
         }),
       })
         .then(res => res.json())
@@ -84,6 +100,8 @@ const SignUpScreen = ({navigation}) => {
           cancelable: false,
         },
       );
+
+      storeData('usertype', user_type);
     }
   };
   return (

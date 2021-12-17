@@ -16,23 +16,54 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import emailChecker from './emailChecker';
-
+import * as Algorithm from '../Algorithm_Encyption_Decryption/index';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const LoginScreen = ({navigation}) => {
   const [data, setData] = React.useState({
     Email: '',
     Password: '',
   });
+
+  const getData = async key => {
+    try {
+      const value = await AsyncStorage.getItem(key);
+      if (value !== null) {
+        console.log('VAL is : ', value, '   iS val|\n');
+        return value;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      console.log('rror reading value');
+    }
+  };
+
   // http://localhost:15000/signup
-  const checkCredentials = () => {
+  const checkCredentials = async () => {
     if (!emailChecker(data.Email)) {
       Alert.alert('Error', 'Please enter correct email address');
     } else if (data.Password.length < 8) {
       Alert.alert('Error', 'Password is atleast 8 characters');
     } else {
       const headers = new Headers();
+      const user_type = await getData('usertype');
+      if (user_type.length === 0) {
+        Alert.alert('No User like this exists', 'no user exists');
+        return;
+      }
+      const enc_email = Algorithm.generate_key(data.Email);
+      const enc_password = Algorithm.generate_key(data.Password);
+
+      console.log(user_type, '  is u type\n\n');
+
+      console.log('====================================');
+      console.log('IS EMAIL : ? ', enc_email);
+      console.log('IS pasword ? ', enc_password);
+      console.log('====================================');
+
       headers.append('Content-Type', 'application/json');
-      headers.append('email', data.Email);
-      headers.append('password', data.Password);
+      headers.append('email', enc_email);
+      headers.append('password', enc_password);
 
       fetch('http://localhost:15000/login', {
         method: 'GET',
@@ -50,8 +81,27 @@ const LoginScreen = ({navigation}) => {
           if (received.response) {
             // USER IS LOGGED IN NOW
             //USER IS FOUND IN DATABASE
+            AsyncStorage.setItem(
+              'usertype',
+              received.data[0]._user_type,
+              err => {
+                console.log('====================================');
+                console.log('EE');
+                console.log('====================================');
+              },
+            );
             navigation.navigate('Home', {
               id: received.data[0].userid,
+              name:
+                received.data[0].gender === 'M'
+                  ? 'Mr. ' +
+                    received.data[0].firstname +
+                    ' ' +
+                    received.data[0].lastname
+                  : 'Mrs. ' +
+                    received.data[0].firstname +
+                    ' ' +
+                    received.data[0].lastname,
             });
           } else {
             Alert.alert('Invalid Credentials', 'Wrong email or password');
@@ -63,6 +113,7 @@ const LoginScreen = ({navigation}) => {
           console.log('====================================');
           Alert.alert('No Connection', 'Not connected to internet');
         });
+
       return;
     }
   };
